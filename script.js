@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
     if (typeof FFmpeg === "undefined") {
-        console.error("FFmpeg.js is not loaded! Cannot proceed.");
+        console.error("❌ FFmpeg.js is still not available.");
         return;
     }
 
+    console.log("✅ FFmpeg.js is available, proceeding...");
+    
     const { createFFmpeg, fetchFile } = FFmpeg;
     const ffmpeg = createFFmpeg({ log: true });
 
@@ -27,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             let finalVideoLength = parseInt(document.getElementById("finalLength").value) || 30;
             let minClipPercent = parseInt(document.getElementById("minClipLength").value) || 25;
-            let maxClipPercent = parseInt(document.getElementById("maxClipLength").value) || 33;
+            let maxClipPercent = parseInt(document.getElementById("maxClipLength").value) || 90;
 
             let totalDuration = 0;
             let clipFiles = [];
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             outputVideo.style.display = 'block';
 
         } catch (error) {
-            console.error("Error processing video:", error);
+            console.error("❌ Error processing video:", error);
         }
     });
 });
