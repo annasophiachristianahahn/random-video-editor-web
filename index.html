@@ -19,15 +19,22 @@
     <input id="minClipLength" type="number" value="25"><br><br>
 
     <label>Max Clip Length (% of original):</label>
-    <input id="maxClipLength" type="number" value="90"><br><br>
+    <input id="maxClipLength" type="number" value="33"><br><br>
 
     <button id="startButton">Start Editing</button>
 
     <h3>Final Output:</h3>
     <video id="outputVideo" controls style="display:none; width: 100%;"></video>
 
-    <!-- ✅ Fix: Ensure FFmpeg.js loads before `script.js` -->
+    <!-- ✅ Fix: Load FFmpeg.js FIRST and ensure script.js loads AFTER -->
     <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        if (typeof FFmpeg === "undefined") {
+            console.error("FFmpeg.js failed to load.");
+        } else {
+            console.log("FFmpeg.js loaded successfully.");
+        }
+    </script>
+    <script src="script.js" defer></script> <!-- ✅ `defer` ensures script.js waits -->
 </body>
 </html>
