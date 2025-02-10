@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const { createFFmpeg, fetchFile } = FFmpeg;
     const ffmpeg = createFFmpeg({ log: true });
 
@@ -7,7 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const outputVideo = document.getElementById("outputVideo");
 
     startButton.addEventListener("click", async () => {
-        await ffmpeg.load();
+        if (!ffmpeg.isLoaded()) {
+            console.log("Loading FFmpeg...");
+            await ffmpeg.load();
+            console.log("FFmpeg Loaded.");
+        }
 
         let inputFiles = videoInput.files;
         if (inputFiles.length === 0) {
