@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Video Editor (FFmpeg.js)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Random Video Editor (FFmpeg.js)</h2>
+
+    <label>Select Video Files:</label>
+    <input type="file" id="videoInput" accept="video/*" multiple><br><br>
+
+    <label>Final Video Length (seconds):</label>
+    <input id="finalLength" type="number" value="30"><br><br>
+
+    <label>Min Clip Length (% of original):</label>
+    <input id="minClipLength" type="number" value="25"><br><br>
+
+    <label>Max Clip Length (% of original):</label>
+    <input id="maxClipLength" type="number" value="90"><br><br>
+
+    <button id="startButton">Start Editing</button>
+
+    <h3>Final Output:</h3>
+    <video id="outputVideo" controls style="display:none; width: 100%;"></video>
+
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.9.7"></script>
+    <script src="script.js"></script>
+</body>
+</html>
