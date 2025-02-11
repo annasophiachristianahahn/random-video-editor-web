@@ -1,5 +1,7 @@
+console.log("✅ script.js is running!");
+
 document.addEventListener("DOMContentLoaded", async () => {
-    console.log("✅ script.js is running!");
+    console.log("✅ DOM fully loaded, script.js executing!");
 
     // Verify FFmpeg.js is available
     if (typeof FFmpeg === "undefined") {
