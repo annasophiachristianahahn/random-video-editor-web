@@ -26,7 +26,7 @@
     <h3>Final Output:</h3>
     <video id="outputVideo" controls style="display:none; width: 100%;"></video>
 
-    <!-- ✅ Step 1: Load FFmpeg.js dynamically -->
+    <!-- ✅ Load FFmpeg.js first -->
     <script>
         function loadFFmpeg() {
             return new Promise((resolve, reject) => {
@@ -45,12 +45,14 @@
         }
     </script>
 
-    <!-- ✅ Step 2: Load FFmpeg.js first, then script.js -->
+    <!-- ✅ Load `script.js` only after FFmpeg.js is available -->
     <script>
         loadFFmpeg().then(() => {
             console.log("✅ Now loading script.js...");
             let mainScript = document.createElement("script");
             mainScript.src = "script.js";
+            mainScript.onload = () => console.log("✅ script.js loaded successfully!");
+            mainScript.onerror = () => console.error("❌ script.js failed to load.");
             document.body.appendChild(mainScript);
         }).catch(error => {
             console.error(error);
