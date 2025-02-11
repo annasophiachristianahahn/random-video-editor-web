@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    console.log("✅ Document Loaded");
+    console.log("✅ script.js is running!");
 
+    // Verify FFmpeg.js is available
     if (typeof FFmpeg === "undefined") {
         console.error("❌ FFmpeg.js is still not available.");
         return;
@@ -15,6 +16,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const videoInput = document.getElementById("videoInput");
     const outputVideo = document.getElementById("outputVideo");
 
+    // ✅ Debugging: Ensure button is found
+    if (!startButton) {
+        console.error("❌ Start button not found!");
+        return;
+    }
+
+    // ✅ Debugging: Check if event fires
     startButton.addEventListener("click", async () => {
         console.log("🟢 'Start Editing' button clicked!");
 
